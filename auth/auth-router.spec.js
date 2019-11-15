@@ -7,7 +7,7 @@ beforeAll(async () => {
 })
 
 describe('register & login tests', () => {
-  describe('[POST] /api/auth/login endpoint', () => {
+  describe('[POST] /api/auth/register endpoint', () => {
     test('the db env is testing', () => {
       expect(process.env.DB_ENV).toBe('testing')
     })
@@ -49,7 +49,7 @@ describe('register & login tests', () => {
       .expect('Content-Type', /json/)
 
     expect(response.status).toBe(401)
-  })    
+  })   
 })
 
 
