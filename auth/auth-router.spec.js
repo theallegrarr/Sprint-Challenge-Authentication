@@ -40,6 +40,16 @@ describe('register & login tests', () => {
       expect(response.status).toBe(200)
     })    
   })
+
+  test('should return 401 Unauthorized', async () => {
+    const response = await request(router)
+      .post('/api/auth/login')
+      .send({ username: 'Kantos', password: '565q' })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+
+    expect(response.status).toBe(401)
+  })    
 })
 
 
