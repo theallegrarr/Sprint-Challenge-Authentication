@@ -88,11 +88,15 @@ function App() {
           <Route 
           exact path='/register'
           render={props => {
-              return (<SignUp 
+            if(!token){  
+            return (<SignUp 
                 mode={'signUp'}
                 setLogin={setLogin}
                 onRegister={onRegister}
                 login={login}/>)
+              } else {
+                return (<Jokes jokes={jokes} />)
+              }
           }} />
           <Route 
           exact path='/jokes'
@@ -134,6 +138,7 @@ function SignUp({ mode, setLogin, login, onLogin, onRegister }){
               })}
             ></input>
             <p>Password: </p><input
+              type='password'
               onChange={(e) => setLogin({
                 ...login,
                 password: e.target.value
